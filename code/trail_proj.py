@@ -14,7 +14,7 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
 
 
-BASE_DIR = Path(r"C:\Users\isaac\Desktop\Trails Project IH 2025")
+BASE_DIR = Path(__file__).resolve().parent.parent 
 TRAILS_PATH = BASE_DIR / "data/raw/trails_slc_clipped.shp"
 OUTPUT_HTML = BASE_DIR / "data/processed/trails_map_trails_only.html"
 TRAILHEADS_PATH = BASE_DIR / "data/processed/trailheads_area_clipped_all.geojson"
