@@ -7,11 +7,10 @@ from folium.plugins import MarkerCluster
 import html, re, googlemaps
 from dotenv import load_dotenv
 import os
-from config import GOOGLE_API_KEY
 
 load_dotenv() 
 
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
 
 

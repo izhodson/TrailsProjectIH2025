@@ -18,6 +18,7 @@ venv/
 data/raw/trails_slc_clipped.dbf 
 data/raw/
 data/processed/trails_proj_json.geojson 
+data/processed/trails_map_trails_only.html
 output/
 
 # API keys
