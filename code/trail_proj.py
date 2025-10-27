@@ -25,7 +25,7 @@ trailheads = gpd.read_file(TRAILHEADS_PATH)
 
 print("Trailheads columns:", trailheads.columns.tolist())
 
-# Convert CRS and clip trailheads to trails extent
+#convert CRS and clip trailheads to trails extent
 if trails.crs.is_geographic:
     trails = trails.to_crs(epsg=26912)
 if trailheads.crs is None or not trailheads.crs.is_geographic:
@@ -81,9 +81,8 @@ m = folium.Map(
     attr="© OpenTopoMap contributors",
 )
 
-# -------------------------------
-# Color Function
-# -------------------------------
+
+#function to get color based on difficulty
 def get_color(difficulty):
     d = str(difficulty).lower()
     if "beginner" in d:
@@ -94,9 +93,7 @@ def get_color(difficulty):
         return "#DC143C"  # red
     return "gray"
 
-# -------------------------------
-# Add Trails Layer
-# -------------------------------
+#draw trails
 folium.GeoJson(
     mtn_trails.to_crs(epsg=4326),
     style_function=lambda feature: {
@@ -117,9 +114,8 @@ folium.GeoJson(
     name="Trails",
 ).add_to(m)
 
-# -------------------------------
-# Add Trailhead Markers
-# -------------------------------
+
+#trailhead markers with info from Google Places API
 cluster = MarkerCluster(name="Trailheads").add_to(m)
 
 for _, row in trailheads.iterrows():
@@ -141,9 +137,8 @@ for _, row in trailheads.iterrows():
         popup=folium.Popup(popup_html, max_width=300),
     ).add_to(cluster)
 
-# -------------------------------
-# Add Legend
-# -------------------------------
+
+#legend
 legend_html = """
     <div style="
     position: fixed;
@@ -165,9 +160,8 @@ legend_html = """
     """
 m.get_root().html.add_child(folium.Element(legend_html))
 
-# -------------------------------
-# Finalize Map
-# -------------------------------
+
+#build and save map
 folium.LayerControl().add_to(m)
 m.save(OUTPUT_HTML)
 print(f"✅ Map saved to {OUTPUT_HTML}")
