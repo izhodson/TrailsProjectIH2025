@@ -3,7 +3,7 @@
 Interactive map showing hiking trails in the Wasatch Front, Utah.
 
 
-![Trail Map Screenshot]("C:\Users\isaac\OneDrive\Pictures\Screenshots\Screenshot 2025-10-27 134916.png")
+![Trail Map Screenshot](images/trail_map.png)
 
 ## Features
 - Trails colored by difficulty (Beginner / Intermediate / Advanced)
